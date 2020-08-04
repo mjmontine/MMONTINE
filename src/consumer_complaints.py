@@ -8,7 +8,7 @@ fields = ['Name', 'Department']
 rows = [ ['Mark', 'Records'],
          ['Macy', 'Collections'] ]
 
-filename = "name_department.csv"
+filename = "./src/report.csv"
 
 with open(filename, 'w') as csvfile:
   csvwriter = csv.writer(csvfile)
