@@ -3,7 +3,7 @@ import fileinput
 import sqlite3
 from pathlib import Path
 
-path = Path(__file__).parent / '../MMONTINE/src/comsumer_complaints.py'
+path = Path(__file__).parent / '../src/comsumer_complaints.py'
 
 def write_temp_csv():
     with path.open('/input/complaints.csv', encoding='utf8') as complaints:
