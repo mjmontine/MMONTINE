@@ -1,13 +1,13 @@
-#Test Python Script
-#print("Please God, don't let me embarrass myself in front of Denise")
-
 import csv
 import fileinput
 import sqlite3
+from pathlib import Path
+
+path = Path(__file__).parent / '../MMONTINE/src/comsumer_complaints.py'
 
 def write_temp_csv():
-    #with path.open(encoding='utf8') as complaints:
-    with open('MMONTINE/input/complaints.csv', encoding='utf8') as complaints:
+    with path.open('/MMONTINE/input/complaints.csv', encoding='utf8') as complaints:
+    #with open('MMONTINE/input/complaints.csv', encoding='utf8') as complaints:
         reader= csv.reader(complaints)
         for row in reader:
             included_cols = [1, 0, 7, 2]
@@ -68,4 +68,3 @@ write_output_csv()
 
 con.commit()
 con.close()
-
