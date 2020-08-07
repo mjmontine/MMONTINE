@@ -41,7 +41,7 @@ with open('csvtemp.csv', 'r') as fin:
     fin.close
 
 def write_output_csv():
-    with open('output.csv', 'w+') as output_csv:
+    with open('../output/report.csv', 'w+') as output_csv:
         wr = csv.writer(output_csv)
         wr.writerow(['product', 'year', 'total complaints', '# of companies recieving >=1 complaint', 'highest % of complaints against 1 company'])
         for i in range(0, count_distinct_p_y[0]):
