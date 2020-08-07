@@ -1,13 +1,9 @@
 import csv
 import fileinput
 import sqlite3
-from pathlib import Path
-
-path = Path(__file__).parent / '../src/comsumer_complaints.py'
 
 def write_temp_csv():
-    with path.open('/input/complaints.csv', encoding='utf8') as complaints:
-    #with open('MMONTINE/input/complaints.csv', encoding='utf8') as complaints:
+    with open('../input/complaints.csv', encoding='utf8') as complaints:
         reader= csv.reader(complaints)
         for row in reader:
             included_cols = [1, 0, 7, 2]
@@ -42,9 +38,10 @@ with open('csvtemp.csv', 'r') as fin:
     count_distinct_p_y = [int(record[0]) for record in cur.fetchall()]
     cur.execute('SELECT DISTINCT p_y FROM calculator;')
     distinct_p_y = cur.fetchall()
+    fin.close
 
 def write_output_csv():
-    with open('MMONTINE/output/report.csv', 'w+') as output_csv:
+    with open('output.csv', 'w+') as output_csv:
         wr = csv.writer(output_csv)
         wr.writerow(['product', 'year', 'total complaints', '# of companies recieving >=1 complaint', 'highest % of complaints against 1 company'])
         for i in range(0, count_distinct_p_y[0]):
