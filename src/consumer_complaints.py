@@ -2,6 +2,7 @@ import csv
 import fileinput
 import sqlite3
 import sys, os
+import re
 
 def write_temp_csv():
     with open('./input/complaints.csv', encoding='utf8') as complaints:
@@ -16,7 +17,9 @@ def write_temp_csv():
                     row = list(row[i] for i in included_cols)
                     for i in range(len(row)):
                         row[i] = row[i].lower()
-                    row[1] = row[1][-4:]
+                    regex="\d{4}"
+                    year = (re.findall(regex, row[1]))
+                    row[1] = str(year)[-6:-2]
                     row[3] = row[0] + row[1]
                     wr.writerow(row)
                 csvtemp.close
@@ -44,7 +47,7 @@ with open('csvtemp.csv', 'r') as fin:
 def write_output_csv():
     with open('./output/report.csv', 'w+') as output_csv:
         wr = csv.writer(output_csv)
-        #wr.writerow(['product', 'year', 'total complaints', '# of companies recieving >=1 complaint', 'highest % of complaints against 1 company'])
+        wr.writerow(['product', 'year', 'total complaints', '# of companies recieving >=1 complaint', 'highest % of complaints against 1 company'])
         for i in range(0, count_distinct_p_y[0]):
             product = str(distinct_p_y[i])[2:-7]
             year = str(distinct_p_y[i])[-7:-3]
