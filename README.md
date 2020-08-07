@@ -1,6 +1,6 @@
 # MMONTINE
     Configuration instructions
-      I wrote and tested this in Python3.  I do not know how it would perform in Python2.  
+      I wrote and tested this in Python2.7 (Atom's default version)
     Installation instructions
       There are no installation requirements that I am aware of.
     Operating instructions
