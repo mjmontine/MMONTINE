@@ -3,7 +3,7 @@ import fileinput
 import sqlite3
 
 def write_temp_csv():
-    with open('..MMONTINE/input/complaints.csv', encoding='utf8') as complaints:
+    with open('../MMONTINE/input/complaints.csv', encoding='utf8') as complaints:
         reader= csv.reader(complaints)
         for row in reader:
             included_cols = [1, 0, 7, 2]
@@ -41,7 +41,7 @@ with open('csvtemp.csv', 'r') as fin:
     fin.close
 
 def write_output_csv():
-    with open('..MMONTINE/output/report.csv', 'w+') as output_csv:
+    with open('../MMONTINE/output/report.csv', 'w+') as output_csv:
         wr = csv.writer(output_csv)
         wr.writerow(['product', 'year', 'total complaints', '# of companies recieving >=1 complaint', 'highest % of complaints against 1 company'])
         for i in range(0, count_distinct_p_y[0]):
